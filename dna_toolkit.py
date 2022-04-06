@@ -10,3 +10,14 @@ def validateSeq(seq):
             return False
     return tmpseq
 
+# Count the frequency of each nucleotide in the DNA string
+def countNucFrequency(seq):
+    # Make sure to run validateSeq() before running this function
+    tmpFreqDict = {}
+    for nuc in seq:
+        if tmpFreqDict.get(nuc) is None:
+            tmpFreqDict[nuc] = 1
+        else:
+            tmpFreqDict[nuc] += 1
+    return tmpFreqDict
+
