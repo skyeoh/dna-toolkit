@@ -13,3 +13,6 @@ def test_for_invalid_seq():
 
 def test_for_invalid_seq_with_upper_lower_cases():
     assert validateSeq("ATtAtGCgCcCxAaT") == False
+
+def test_for_empty_seq():
+    assert validateSeq("") == False
