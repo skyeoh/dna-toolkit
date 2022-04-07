@@ -23,3 +23,8 @@ def countNucFrequency(seq):
             tmpFreqDict[nuc] += 1
     return tmpFreqDict
 
+# Transcribe a DNA string: DNA -> RNA
+def transcribeSeq(seq):
+    # Make sure to run validateSeq() before running this function
+    return seq.replace("T", "U")
+
