@@ -1,9 +1,5 @@
+import structures as strc
 
-# Define the bases
-nucleotides = ["A", "C", "G", "T"]
-
-# Define the base complements
-nucleotideComplements = {"A": "T", "C": "G", "G": "C", "T": "A"}
 
 # Check the sequence to ensure it is a DNA string
 def validateSeq(seq):
@@ -11,9 +7,10 @@ def validateSeq(seq):
         return False
     tmpseq = seq.upper()
     for nuc in tmpseq:
-        if nuc not in nucleotides:
+        if nuc not in strc.nucleotides:
             return False
     return tmpseq
+
 
 # Count the frequency of each nucleotide in the DNA string
 def countNucFrequency(seq):
@@ -26,13 +23,15 @@ def countNucFrequency(seq):
             tmpFreqDict[nuc] += 1
     return tmpFreqDict
 
+
 # Transcribe a DNA string: DNA -> RNA
 def transcribeSeq(seq):
     # Make sure to run validateSeq() before running this function
     return seq.replace("T", "U")
 
+
 # Generate the reverse complement of a DNA string
 def generateReverseComplement(seq):
     # Make sure to run validateSeq() before running this function
-    complementSeq = "".join(nucleotideComplements[nuc] for nuc in seq)
+    complementSeq = "".join(strc.nucleotideComplements[nuc] for nuc in seq)
     return complementSeq[::-1]
