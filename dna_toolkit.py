@@ -2,6 +2,9 @@
 # Define the bases
 nucleotides = ["A", "C", "G", "T"]
 
+# Define the base complements
+nucleotideComplements = {"A": "T", "C": "G", "G": "C", "T": "A"}
+
 # Check the sequence to ensure it is a DNA string
 def validateSeq(seq):
     if len(seq) == 0:
@@ -28,3 +31,8 @@ def transcribeSeq(seq):
     # Make sure to run validateSeq() before running this function
     return seq.replace("T", "U")
 
+# Generate the reverse complement of a DNA string
+def generateReverseComplement(seq):
+    # Make sure to run validateSeq() before running this function
+    complementSeq = "".join(nucleotideComplements[nuc] for nuc in seq)
+    return complementSeq[::-1]
