@@ -75,3 +75,19 @@ def generateReverseComplement(seq):
     # Make sure to run validateSeq() before running this function
     complementSeq = "".join(strc.nucleotideComplements[nuc] for nuc in seq)
     return complementSeq[::-1]
+
+
+# Calculate the GC content of a DNA or RNA string
+def calculateGCContent(seq):
+    """
+    Calculate GC content of DNA or RNA string,
+    i.e. percentage of bases that are Guanine
+    or Cytosine.
+
+    Args:
+        seq (str): DNA or RNA string
+
+    Returns:
+        GC content of seq (float)
+    """
+    return round((seq.count("G") + seq.count("C")) / len(seq) * 100)
