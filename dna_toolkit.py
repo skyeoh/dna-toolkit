@@ -78,7 +78,7 @@ def generateReverseComplement(seq):
 
 
 # Calculate the GC content of a DNA or RNA string
-def calculateGCContent(seq):
+def calculateGCContent(seq, start=None, end=None):
     """
     Calculate GC content of DNA or RNA string,
     i.e. percentage of bases that are Guanine
@@ -86,8 +86,10 @@ def calculateGCContent(seq):
 
     Args:
         seq (str): DNA or RNA string
+        start (int) [Optional]: index within seq where calculation starts
+        end (int) [Optional]: index within seq where calculation ends
 
     Returns:
-        GC content of seq (float)
+        GC content of seq or segment of seq defined by start and end (float)
     """
-    return round((seq.count("G") + seq.count("C")) / len(seq) * 100)
+    return round((seq.count("G", start, end) + seq.count("C", start, end)) / len(seq[start:end]) * 100)
