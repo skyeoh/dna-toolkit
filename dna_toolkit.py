@@ -93,3 +93,30 @@ def calculateGCContent(seq, start=None, end=None):
         GC content of seq or segment of seq defined by start and end (float)
     """
     return round((seq.count("G", start, end) + seq.count("C", start, end)) / len(seq[start:end]) * 100)
+
+
+# Calculate the GC content of subsequences of a DNA or RNA string that are of equal length
+def calculateGCContentEqualSubseq(seq, k=10):
+    """
+    Calculate GC content of subsequences of DNA or RNA string
+    that are of equal length.
+
+    Args:
+        seq (str): DNA or RNA string
+        k (int) [Optional]: length of subsequence (default value = 10)
+
+    Returns:
+        GC content of each subsequence (list)
+        If last subsequence is shorter than k, last entry
+        is simply GC content of that subsequence.
+    """
+    subseqGCContent = []
+    front = 0
+    seqLen = len(seq)
+    while front < seqLen:
+        end = front + k
+        if end >= seqLen:
+            end = seqLen
+        subseqGCContent.append(calculateGCContent(seq, front, end))
+        front += k
+    return subseqGCContent
