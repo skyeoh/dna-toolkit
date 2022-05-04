@@ -120,3 +120,18 @@ def calculateGCContentEqualSubseq(seq, k=10):
         subseqGCContent.append(calculateGCContent(seq, front, end))
         front += k
     return subseqGCContent
+
+
+# Translate a DNA string: DNA -> ... -> amino acid sequence
+def translateSeq(seq, initPos=0):
+    """
+    Perform translation of DNA string: DNA -> ... -> amino acid sequence
+
+    Args:
+        seq (str): DNA string
+        initPos (int) [Optional]: index within seq where translation starts
+
+    Returns:
+        sequence of amino acids corresponding to seq (str)
+    """
+    return [strc.DNACodons[seq[pos:pos+3]] for pos in range(initPos, len(seq), 3) if (len(seq)-pos)>=3]
