@@ -1,4 +1,5 @@
 import structures as strc
+import collections as coll
 
 
 # Check the sequence to ensure it is a DNA string
@@ -135,3 +136,27 @@ def translateSeq(seq, initPos=0):
         sequence of amino acids corresponding to seq (str)
     """
     return [strc.DNACodons[seq[pos:pos+3]] for pos in range(initPos, len(seq), 3) if (len(seq)-pos)>=3]
+
+
+# Calculate the frequency of each codon encoding a particular amino acid in a DNA string
+def calculateCodonUsage(seq, aminoAcid):
+    """
+    Calculate frequency of each codon encoding particular amino acid in DNA string
+
+    Args:
+        seq (str): DNA string
+        aminoAcid (char): amino acid
+
+    Returns:
+        frequency of each codon encoding aminoAcid (dict)
+    """
+    tmpList = []
+    for pos in range(0, len(seq)-2, 3):
+        if strc.DNACodons[seq[pos:pos+3]] == aminoAcid:
+            tmpList.append(seq[pos:pos+3])
+
+    freqDict = dict(coll.Counter(tmpList))
+    totalWeight = sum(freqDict.values())
+    for seq in freqDict:
+        freqDict[seq] = round(freqDict[seq] / totalWeight, 2)
+    return freqDict
